@@ -58,7 +58,7 @@ if (!isset($_SESSION["status"]) || !$_SESSION["status"]){
               <?php
 
                 //Lista de módulos
-                $listaOpciones = $permisos[$_SESSION["idrol"]];
+                $listaOpciones = $permisos[$_SESSION["rol"]];
                 foreach($listaOpciones as $opcion){
                   if ($opcion != "index"){ // el desigual sale con ! = 
                     echo "
@@ -76,7 +76,7 @@ if (!isset($_SESSION["status"]) || !$_SESSION["status"]){
               <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <?= $_SESSION["nombres"] ?>
                   <?= $_SESSION["apellidos"]?>  
-                  (<?= $_SESSION["idrol"]?> )
+                  (<?= $_SESSION["rol"]?> )
                   <!--img src="<?= $_SESSION["avatar"] ?>">-->
               </a>
               <div class="dropdown-menu" aria-labelledby="dropdownId">

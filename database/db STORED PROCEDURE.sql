@@ -165,19 +165,20 @@ END $$
 -- --------------------------------------------
 
 DELIMITER $$
-CREATE PROCEDURE spu_usuarios_login(IN _email VARCHAR(90))
+CREATE PROCEDURE spu_usuarios_login(IN _email VARCHAR(60))
 BEGIN
-	SELECT
-    idusuario,
-    apellidos,
-    nombres,
-    email,
-    clave_acceso,
-    nivelacceso
-    FROM usuarios
-    WHERE 	email = _email AND
-			inactive_at IS NULL;
+    SELECT
+        USU.idusuario,
+        USU.apellidos,
+        USU.nombres,
+        USU.email,
+        USU.clave_acceso,
+        ROL.rol
+    FROM usuarios AS USU
+    INNER JOIN roles AS ROL ON USU.idrol = ROL.idrol
+    WHERE USU.email = _email AND USU.inactive_at IS NULL;
 END $$
+
 
 
 -- ---------------------------------
@@ -208,7 +209,7 @@ CREATE VIEW vs_productos_categorias
 AS
 	SELECT
 		PRD.idproducto,
-        PRD.idcategoria,
+		PRD.idcategoria,
 		CAT.categoria,
 		PRD.descripcion,
 		PRD.precio, 
