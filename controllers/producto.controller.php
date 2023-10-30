@@ -40,6 +40,7 @@ if (isset($_POST['operacion'])){
 
       echo json_encode($producto->registrar($datosEnviar));
       break;
+      
     case 'eliminar':
       $datosEnviar = ["idproducto" => $_POST['idproducto']];
       echo $producto->eliminar($datosEnviar);

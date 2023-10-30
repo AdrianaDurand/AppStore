@@ -5,11 +5,13 @@ require_once 'Conexion.php';
 class Usuario extends Conexion{
 
   //Establecemos la conexion
-  private $conexion; 
+  private $conexion;
+  private $pdo; 
 
   //Creamos nuestra funcion CONSTRUCTOR
    public function __CONSTRUCT(){
     $this->conexion = parent::getConexion();
+    $this->pdo = parent::getConexion();
    }
 
   //Creamos nuestra función LISTAR
@@ -42,16 +44,16 @@ class Usuario extends Conexion{
 
   public function registrar($datos = []){
     try {
-      $consulta = $this->conexion->prepare("CALL spu_usuarios_registrar(?,?,?,?,?,?,?,?)");
+      $consulta = $this->conexion->prepare("CALL spu_usuarios_registrar(?,?,?,?,?,?,?)");
       $consulta->execute(
         array(
+
+          $datos['nombres'],
+          $datos['apellidos'],
           $datos['idrol'],
           $datos['idnacionalidad'],
-          $datos['apellidos'],
-          $datos['nombres'],
           $datos['email'],
           $datos['clave_acceso'],
-          $datos['nivelacceso'],
           $datos['avatar']
 
         )

@@ -101,10 +101,10 @@
             .then(datos => {
               // Operaciones en proceso ... (renderizar los options en <select>)
               datos.forEach(element => {
-                const tagOptionRol = document.createElement("option");
-                tagOptionRol.value = element.idrol;
-                tagOptionRol.innerHTML = element.rol;
-                $("#rol").appendChild(tagOptionRol);
+                const tagOption = document.createElement("option")
+                tagOption.value = element.idrol
+                tagOption.innerText = element.rol
+                $("#rol").appendChild(tagOption);
 
               });
             })
@@ -126,10 +126,10 @@
             .then(datos => {
               // Operaciones en proceso ... (renderizar los options en <select>)
               datos.forEach(element => {
-                const tagOptionNacionalidad = document.createElement("option");
-                tagOptionNacionalidad.value = element.idnacionalidad;
-                tagOptionNacionalidad.innerHTML = element.nombre_pais;
-                $("#nacionalidad").appendChild(tagOptionNacionalidad);
+                const tagOption = document.createElement("option")
+                tagOption.value = element.idnacionalidad
+                tagOption.innerText = element.nombre_pais
+                $("#nacionalidad").appendChild(tagOption);
               });
             })
             .catch(e => {
@@ -140,10 +140,10 @@
           function usuarioRegister() {
             const parametros = new FormData();
             parametros.append("operacion", "registrar");
-            parametros.append("idrol", $("#rol").value);
-            parametros.append("idnacionalidad", $("#nacionalidad").value);
             parametros.append("apellidos", $("#apellidos").value);
             parametros.append("nombres", $("#nombres").value);
+            parametros.append("idrol", $("#rol").value);
+            parametros.append("idnacionalidad", $("#nacionalidad").value);
             parametros.append("email", $("#email").value);
             parametros.append("clave_acceso", $("#clave_acceso").value);
             parametros.append("avatar", $("#avatar").files[0]);

@@ -17,21 +17,19 @@ if (isset($_POST['operacion'])) {
       $ahora = date('dmYhis');
       $nombreArchivo = sha1($ahora) . ".jpg";
 
-
       $datosEnviar = [
+        'nombres'         => $_POST['nombres'],
+        'apellidos'       => $_POST['apellidos'],
         'idrol'           => $_POST['idrol'],
         'idnacionalidad'  => $_POST['idnacionalidad'],
-        'apellidos'       => $_POST['apellidos'],
-        'nombres'         => $_POST['nombres'],
         'email'           => $_POST['email'],
         'clave_acceso'    => $_POST['clave_acceso'],
-        'nivelacceso'    => $_POST['nivelacceso'],
         'avatar'          => '' 
       ];
 
       if (isset($_FILES['avatar'])) {
         if (move_uploaded_file($_FILES['avatar']['tmp_name'], "../images/" . $nombreArchivo)) {
-          $datosEnviar["avatar"] = '';
+          $datosEnviar["avatar"] = $nombreArchivo;
         } 
       }
       echo json_encode($usuario->registrar($datosEnviar));
@@ -64,7 +62,7 @@ if($_POST['operacion'] == 'login'){
       $_SESSION["idusuario"] = $registro["idusuario"];
       $_SESSION["nombres"] = $registro["nombres"];
       $_SESSION["apellidos"] = $registro["apellidos"];
-      $_SESSION["nivelacceso"] = $registro["nivelacceso"];
+      $_SESSION["idrol"] = $registro["idrol"];
 
       if(password_verify($_POST['clave_acceso'], $claveencriptada)){
         $_SESSION["status"] = true;

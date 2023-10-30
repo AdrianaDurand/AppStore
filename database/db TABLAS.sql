@@ -57,7 +57,6 @@ CREATE TABLE usuarios (
 	avatar 		VARCHAR(200)		NULL,	-- fk
 	email		VARCHAR(30)		NOT NULL,
 	clave_acceso	VARCHAR(60)		NOT NULL,
-	nivelacceso 	CHAR(3) 		NOT NULL,
 	create_at 	DATETIME		DEFAULT NOW(),
 	update_at	DATETIME		NULL,
 	inactive_at	DATETIME		NULL,

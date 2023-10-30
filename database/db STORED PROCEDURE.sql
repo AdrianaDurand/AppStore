@@ -111,20 +111,19 @@ END$$
 DELIMITER $$
 CREATE PROCEDURE spu_usuarios_registrar
 (
+	IN _nombres			VARCHAR(40),
+	IN _apellidos			VARCHAR(30),	
 	IN _idrol			INT,
 	IN _idnacionalidad 		INT,
-	IN _apellidos			VARCHAR(30),
-	IN _nombres			VARCHAR(40),
 	IN _email			VARCHAR(30),
 	IN _clave_acceso		VARCHAR(60),
-	IN _nivelacceso			CHAR(3),
 	IN _avatar			VARCHAR(200)
 )
 BEGIN
 	INSERT INTO usuarios
-		(idrol, idnacionalidad, apellidos, nombres, email, clave_acceso, nivelacceso, avatar)
+		(idrol, idnacionalidad, apellidos, nombres, email, clave_acceso, avatar)
 		VALUES
-		(_idrol, _idnacionalidad, _apellidos, _nombres, _email, _clave_acceso, _nivelacceso, NULLIF(_avatar, ''));
+		(_idrol, _idnacionalidad, _apellidos, _nombres, _email, _clave_acceso, NULLIF(_avatar, ''));
         
 	SELECT @@last_insert_id 'idusuario';
 END $$

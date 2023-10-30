@@ -4,9 +4,9 @@ session_start();
 //Perfiles de usuarios - CONTROL DE ACCESOS
 // Arreglo asociativo
 $permisos = [
-  "INV" => ["index", "producto/listar", "categoria"],
-  "AST" => ["index", "producto/listar"],
-  "ADM" => ["index", "producto/listar"],
+  "Invitado" => ["index", "producto/listar", "categoria"],
+  "Asistente" => ["index", "producto/listar"],
+  "Administrador" => ["index", "producto/listar"],
 ];
 
 
@@ -58,7 +58,7 @@ if (!isset($_SESSION["status"]) || !$_SESSION["status"]){
               <?php
 
                 //Lista de módulos
-                $listaOpciones = $permisos[$_SESSION["nivelacceso"]];
+                $listaOpciones = $permisos[$_SESSION["idrol"]];
                 foreach($listaOpciones as $opcion){
                   if ($opcion != "index"){ // el desigual sale con ! = 
                     echo "
@@ -76,7 +76,7 @@ if (!isset($_SESSION["status"]) || !$_SESSION["status"]){
               <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <?= $_SESSION["nombres"] ?>
                   <?= $_SESSION["apellidos"]?>  
-                  (<?= $_SESSION["nivelacceso"]?> )
+                  (<?= $_SESSION["idrol"]?> )
                   <!--img src="<?= $_SESSION["avatar"] ?>">-->
               </a>
               <div class="dropdown-menu" aria-labelledby="dropdownId">

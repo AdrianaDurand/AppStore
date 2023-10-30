@@ -280,11 +280,11 @@ INSERT INTO nacionalidades (nombre_pais , nombre_corto) VALUES
 
 
 -- Usuarios
-INSERT INTO usuarios (idrol, idnacionalidad, apellidos, nombres, email, clave_acceso, nivelacceso) VALUES
-(1, 3,'Cáceres Martinez', 'Andrea Silvana', 'silvana@gmail.com', 'caceresAndrea123', 'ADM'),
-(1, 7,'Contreras Altamirano', 'Sneyder Jhon', 'sneyder@gmail.com', 'contreras1299SNYDER', 'AST'),
-(2, 10,'Gómez Rodrigues', 'Ana Lucia', 'analucia@gmail.com', 'anaLUCIA2020', 'INV'),
-(2,20,'López Gonzales', 'Marco Antonio', 'marcoantonio@gmail.com', "AntonioLopez", 'INV');
+INSERT INTO usuarios (idrol, idnacionalidad, apellidos, nombres, email, clave_acceso) VALUES
+(1, 3,'Cáceres Martinez', 'Andrea Silvana', 'silvana@gmail.com', 'caceresAndrea123'),
+(1, 7,'Contreras Altamirano', 'Sneyder Jhon', 'sneyder@gmail.com', 'contreras1299SNYDER'),
+(2, 10,'Gómez Rodrigues', 'Ana Lucia', 'analucia@gmail.com', 'anaLUCIA2020'),
+(2,20,'López Gonzales', 'Marco Antonio', 'marcoantonio@gmail.com', "AntonioLopez");
 
 
 -- Encriptando las claves : SENATI123
@@ -299,7 +299,7 @@ UPDATE usuarios SET
 
 CALL spu_productos_registrar(1,'New', 12, 1, NULL)
 
-CALL spu_usuarios_registrar(2, 63, 'Salvador', 'Marina', 'marina@gmail.com', '12345', 'ADM', '');
+CALL spu_usuarios_registrar(2, 63, 'Salvador', 'Marina', 'marina@gmail.com', '12345', '');
 
 CALL spu_usuarios_login('sneyder@gmail.com');
 
