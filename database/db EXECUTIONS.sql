@@ -291,7 +291,13 @@ UPDATE usuarios SET
 	clave_acceso = '$2y$10$75lA.B0Xsqf12p96E/myo.MJG3EylGhH92ENeFKMcQ2Ysjk//FmHm';
     
 
-
+-- Especificaciones
+ INSERT INTO especificaciones(idproducto, clave, valor) VALUES
+	(2, 'Marca', 'New'),
+	(2, 'Color', 'Negro'),
+	(2, 'Año', '2020');
+	
+	
 -- -------------------------------------------------------------------------------------
 -- --------------------EJECUTANDO PROCEDIMIENTOS ALMACENADOS----------------------------
 -- -------------------------------------------------------------------------------------
@@ -304,8 +310,11 @@ CALL spu_usuarios_login('jhovana@gmail.com');
 
 CALL spu_categorias_listar (5); 
 
-SELECT*FROM usuarios
+SELECT*FROM especificaciones
 
+CALL spu_especificaciones_registrar(1,'Color','Blanco')
+
+CALL spu_especificaciones_listar
 
 
 

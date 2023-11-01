@@ -68,13 +68,13 @@ CONSTRAINT fk_idnacionalidad FOREIGN KEY (idnacionalidad) REFERENCES nacionalida
 -- DataSheet
 
 CREATE TABLE especificaciones (
-	idespecificaciones  		INT PRIMARY KEY AUTO_INCREMENT,
+	idespecificacion 		INT PRIMARY KEY AUTO_INCREMENT,
 	idproducto 			INT		NOT NULL,
 	clave				VARCHAR(30)	NOT NULL,
 	valor				VARCHAR(300) 	NOT NULL,
 	create_at 			DATETIME	DEFAULT NOW(),
 	update_at			DATETIME	NULL,
-	inactive_at			DATETIME	NULL,
+	inactive_at			DATETIME	NULL
 )ENGINE = INNODB;
 
 
@@ -85,5 +85,5 @@ CREATE TABLE galerias (
 	valor			VARCHAR(300) 		NOT NULL,
 	create_at 		DATETIME		DEFAULT NOW(),
 	update_at		DATETIME		NULL,
-	inactive_at		DATETIME		NULL,
+	inactive_at		DATETIME		NULL
 )ENGINE = INNODB;

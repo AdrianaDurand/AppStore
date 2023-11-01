@@ -232,3 +232,38 @@ BEGIN
     END IF;
 	
 END $$
+
+
+
+-- -------------------------------------------------------------------------------------
+-- ---------------Procedimientos Alamacenados ESPECIFICACIONES--------------------------
+-- -------------------------------------------------------------------------------------
+
+DELIMITER $$
+CREATE PROCEDURE spu_especificaciones_listar ()
+BEGIN 
+	SELECT ESP.idespecificacion, 
+	PRO.descripcion, 
+	ESP.clave, 
+	ESP.valor
+	FROM especificaciones ESP
+	INNER JOIN productos PRO ON ESP.idproducto = PRO.idproducto
+	WHERE ESP.inactive_at IS NULL;
+END $$
+
+
+DELIMITER $$
+CREATE PROCEDURE spu_especificaciones_registrar
+(
+	IN _idproducto	 	INT,
+	IN _clave		VARCHAR(30),
+	IN _valor		VARCHAR(300)
+)
+BEGIN
+	INSERT INTO especificaciones
+		(idproducto, clave, valor)
+		VALUES
+		(_idproducto, _clave, _valor);
+        
+	SELECT @@last_insert_id 'idespecificacion';
+END $$
